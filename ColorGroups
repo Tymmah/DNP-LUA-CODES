@@ -1,0 +1,22 @@
+if SERVER then
+  AddCSLuaFile("scoreboardcolors.lua")
+else
+	function MySBColors(ply)
+		if ply:IsUserGroup("superadmin") then
+                 return Color(102, 0, 204)
+		else
+			if ply:IsUserGroup("operator") then
+			 return Color(0, 105, 240)
+			else
+				if ply:IsUserGroup("redranger") then
+				 return Color(204, 0, 0)
+				else
+					if ply:IsUserGroup("admin") then
+					 return Color(255, 255, 51)
+					end
+			    end
+			end
+		end
+	end
+	hook.Add("TTTScoreboardColorForPlayer", "MySBColors", MySBColors)
+end
